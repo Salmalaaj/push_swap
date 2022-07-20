@@ -6,32 +6,29 @@
 #    By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 08:08:31 by slaajour          #+#    #+#              #
-#    Updated: 2022/05/25 08:34:09 by slaajour         ###   ########.fr        #
+#    Updated: 2022/07/19 10:29:07 by slaajour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+SRCS = push_swap.c check_args.c stack_a.c moves.c functions.c
 
-CC = gcc
+FLAGS = -Wall -Wextra -Werror 
+OBJS	= 	$(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+DEBUG = -fsanitize=address -g
 
-SRCS = push_swap.c \
-		check_args.c \
+NAME	= 	push_swap
+RM		= 	@rm -f
 
-OBJS = $(SRCS:.c=.o)
-
-all: $(NAME)
+all:	$(NAME)
 
 $(NAME):
-		cc $(FLAGS) -c $(SRCS)
-		@ar rcs $(NAME) $(OBJS)
+	@cc $(FLAGS) $(SRCS) -o $(NAME) 
 
 clean:
-		@rm -rf $(OBJS)
+	${RM} ${OBJS}
 
-fclean: clean
-		@rm -rf $(NAME)
-	
-re: fclean all
-		
+fclean:	clean
+	${RM} ${NAME}
+
+re:		fclean all

@@ -6,11 +6,29 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 06:14:39 by slaajour          #+#    #+#             */
-/*   Updated: 2022/05/25 07:54:03 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/07/17 14:39:15 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	check_args(int argc, char **argv)
+{
+	int	*tab;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 1;
+	tab = NULL;
+	tab = malloc(sizeof(int) * argc - 1);
+	while (i < argc - 1)
+		digit(argv[++i]);
+	i = 0;
+	while (i < argc - 1)
+		tab[i++] = ft_atoi(argv[j++]);
+	duplicated(tab, argc - 1);
+}
 
 void	digit(char *av)
 {
@@ -37,11 +55,17 @@ void	digit(char *av)
 	}
 }
 
+void	print_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	n;
-	int	sign;
+	int			i;
+	long int	n;
+	int			sign;
 
 	i = 0;
 	n = 0;
@@ -54,16 +78,13 @@ int	ft_atoi(const char *str)
 			sign = sign * (-1);
 		i++;
 	}
-	if (str[i] > 2147483647 && str[i] < -2147483648)
-	{
-		write(1, "Error\n", 6);
-		exit(0);
-	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		n = (n * 10) + (str[i] - 48);
 		i++;
 	}
+	if (n > 2147483647 || n < -2147483648)
+		print_error();
 	return (n * sign);
 }
 
@@ -73,7 +94,7 @@ void	duplicated(int *dup, int num)
 	int	j;
 
 	index = 0;
-	while (dup[index])
+	while (index < num)
 	{
 		j = index + 1;
 		while (j < num)
@@ -83,6 +104,7 @@ void	duplicated(int *dup, int num)
 				write(1, "Error\n", 6);
 				exit(0);
 			}
+			j++;
 		}
 		index++;
 	}

@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   functions.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 04:52:53 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/19 15:42:21 by slaajour         ###   ########.fr       */
+/*   Created: 2022/07/17 17:06:51 by slaajour          #+#    #+#             */
+/*   Updated: 2022/07/18 14:08:17 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	afficher_stack(t_list *stack, char c)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		i;
-	
-	stack_b = NULL;
-	if (argc >= 2)
+	t_list	*tmp;
+	tmp = stack;
+	if (tmp)
+		printf("\n-------- Stack %c --------\n", c);
+	while (tmp)
 	{
-		check_args(argc, argv);
-		i = 1;
-		while (i < argc)
-		{
-			creat_stack_a(&stack_a, ft_atoi(argv[i]));
-			i++;
-		}
-		creat_stack_b(stack_b);
-		afficher_stack(stack_a, 'A');
-		afficher_stack(stack_b, 'B');
+		printf("[ %d ]", tmp->data);
+		tmp = tmp->next;
+		if (tmp)
+			printf(" --> ");
 	}
-	//system("leaks push_swap");
-	return (0);
 }
