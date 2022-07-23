@@ -28,9 +28,7 @@ int	main(int argc, char **argv)
 			creat_stack_a(&stack_a, ft_atoi(argv[i]));
 			i++;
 		}
-		creat_stack_b(stack_b);
 		afficher_stack(stack_a, 'A');
-		afficher_stack(stack_b, 'B');
 	}
 	//system("leaks push_swap");
 	return (0);
