@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
 			creat_stack_a(&stack_a, ft_atoi(argv[i]));
 			i++;
 		}
+		if (stack_already_sorted(stack_a) == 0)
+			start_sorting(&stack_a, &stack_b, argc);
 		afficher_stack(stack_a, 'A');
 	}
 	//system("leaks push_swap");

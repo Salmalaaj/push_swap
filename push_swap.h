@@ -31,7 +31,6 @@ void	duplicated(int *dup, int num);
 
 		/* LINKED LIST STUFF */
 void	creat_stack_a(t_list **stack, int i);
-t_list	*creat_stack_b(t_list *head);
 void	ft_lstadd_back(t_list **stack, t_list *new);
 t_list	*ft_lstlast(t_list *stack);
 
@@ -39,6 +38,28 @@ t_list	*ft_lstlast(t_list *stack);
 void	swapping(int *first, int *second);
 void	sa(t_list *stack_a);
 void	sb(t_list *stack_b);
+void	ss(t_list *stack_a, t_list *stack_b);
+void    pa(t_list **stack_a, t_list **stack_b);
+void    pb(t_list **stack_a, t_list **stack_b);
+void    ra(t_list **stack_a);
+void    rb(t_list **stack_b);
+void    rr(t_list **stack_a, t_list **stack_b);
+int     last_node(t_list **stack_a);
+void    rra(t_list **stack_a);
+void    rrb(t_list **stack_b);
+void    rrr(t_list **stack_a, t_list **stack_b);
+
+		/* SORTING */
+void    start_sorting(t_list **stack_a, t_list **stack_b, int argc);
+int     stack_already_sorted(*stack_a);
+void    sort_two(t_list **stack_a);
+void    sort_tree(t_list **stack_a);
+void    sort_four(t_list **stack_a, t_list **stack_b);
+void    find_smallest(t_list **stack_a, t_list **stack_b);
+int     ft_index(t_list **stack_a);
+void    sort_five(t_list **stack_a, t_list **stack_b);
+
+		/* RANDOM FUNCTIONS */
 void	afficher_stack(t_list *stack, char c);
 
 #endif

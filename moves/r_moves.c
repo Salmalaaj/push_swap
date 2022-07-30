@@ -36,4 +36,4 @@ void    rr(t_list **stack_a, t_list **stack_b)
 {
     ra(stack_a);
     rb(stack_b);
-}
+} 

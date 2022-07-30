@@ -10,7 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = push_swap.c check_args.c stack_a.c moves.c functions.c
+SRCS = push_swap.c check_args.c stack_a.c functions.c p_moves.c \
+		rr_moves.c s_moves.c r_moves.c sort_small_numbers.c \
+		sorting_first_steps.c 
 
 FLAGS = -Wall -Wextra -Werror 
 OBJS	= 	$(SRCS:.c=.o)
