@@ -33,6 +33,7 @@ void	duplicated(int *dup, int num);
 void	creat_stack_a(t_list **stack, int i);
 void	ft_lstadd_back(t_list **stack, t_list *new);
 t_list	*ft_lstlast(t_list *stack);
+int		ft_lstsize(t_list **stack_a);
 
 		/* MOVES */
 void	swapping(int *first, int *second);
