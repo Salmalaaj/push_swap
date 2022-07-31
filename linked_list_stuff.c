@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   linked_list_stuff.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/30 21:01:19 by slaajour          #+#    #+#             */
+/*   Updated: 2022/07/30 21:27:32 by slaajour         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -32,10 +43,10 @@ t_list	*ft_lstlast(t_list *stack)
 	return (stack);
 }
 
-int		ft_lstsize(t_list **stack_a)
+int	ft_lstsize(t_list **stack_a)
 {
-	t_list *tmp;
-	int size;
+	t_list	*tmp;
+	int		size;
 
 	tmp = *stack_a;
 	size = 0;

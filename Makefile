@@ -6,13 +6,13 @@
 #    By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 08:08:31 by slaajour          #+#    #+#              #
-#    Updated: 2022/07/19 10:29:07 by slaajour         ###   ########.fr        #
+#    Updated: 2022/07/30 21:05:34 by slaajour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = push_swap.c check_args.c linked_list_stuff.c functions.c p_moves.c \
-		rr_moves.c s_moves.c r_moves.c sort_small_numbers.c \
-		sorting_first_steps.c 
+SRCS = push_swap.c check_args.c linked_list_stuff.c functions.c moves/p_moves.c \
+		moves/rr_moves.c moves/s_moves.c moves/r_moves.c sorting/sort_small_numbers.c \
+		sorting/sorting_first_steps.c 
 
 FLAGS = -Wall -Wextra -Werror 
 OBJS	= 	$(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:06:51 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/18 14:08:17 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/07/30 21:27:35 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	afficher_stack(t_list *stack, char c)
 {
 	t_list	*tmp;
+
 	tmp = stack;
 	if (tmp)
 		printf("\n-------- Stack %c --------\n", c);

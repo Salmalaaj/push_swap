@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 04:52:53 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/19 15:42:21 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/07/30 21:31:23 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		i;
-	
+
 	stack_b = NULL;
 	if (argc >= 2)
 	{
