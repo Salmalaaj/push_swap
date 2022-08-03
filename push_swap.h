@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 04:53:18 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/30 21:30:47 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/03 04:38:10 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ typedef struct s_list
 	int				data;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_interval
+{
+	int	first;
+	int	center1;
+	int	center2;
+	int	last;
+}	t_interval;
 
 		/* CHECKING ARGUMENTS */
 void	check_args(int argc, char **argv);
@@ -51,7 +59,7 @@ void	rrb(t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
 
 		/* SORTING */
-void	start_sorting(t_list **stack_a, t_list **stack_b, int argc);
+void	start_sorting(t_list **stack_a, t_list **stack_b, int argc, int *arr);
 int		stack_already_sorted(t_list *stack_a);
 void	sort_two(t_list **stack_a);
 void	sort_tree(t_list **stack_a);
@@ -59,6 +67,11 @@ void	sort_four(t_list **stack_a, t_list **stack_b);
 void	find_smallest(t_list **stack_a, t_list **stack_b);
 int		ft_index(t_list **stack_a);
 void	sort_five(t_list **stack_a, t_list **stack_b);
+void	after_six(t_list **stack_a, int *arr);
+void	algo(t_list **stack_a, int *arr, int nbr);
+void	transfert(t_list **stack_a, int *arr);
+void	sort_arr(int *arr, int size);
+void	make_interval(t_list **stack_a, int *arr, t_interval *interv, int nbr);
 
 		/* RANDOM FUNCTIONS */
 void	afficher_stack(t_list *stack, char c);

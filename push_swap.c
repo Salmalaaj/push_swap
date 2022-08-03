@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 04:52:53 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/30 21:31:23 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/03 04:37:52 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int		*arr;
 	int		i;
 
 	stack_b = NULL;
+	arr = NULL;
 	if (argc >= 2)
 	{
 		check_args(argc, argv);
@@ -29,7 +31,7 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		if (stack_already_sorted(stack_a) == 0)
-			start_sorting(&stack_a, &stack_b, argc);
+			start_sorting(&stack_a, &stack_b, argc, arr);
 		afficher_stack(stack_a, 'A');
 	}
 	//system("leaks push_swap");

@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:55:24 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/30 23:53:37 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/03 04:11:04 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	stack_already_sorted(t_list *stack_a)
 	return (1);
 }
 
-void	start_sorting(t_list **stack_a, t_list **stack_b, int argc)
+void	start_sorting(t_list **stack_a, t_list **stack_b, int argc, int *arr)
 {
 	if (argc == 3)
 		sort_two(stack_a);
@@ -40,20 +40,37 @@ void	start_sorting(t_list **stack_a, t_list **stack_b, int argc)
 		sort_four(stack_a, stack_b);
 	else if (argc == 6)
 		sort_five(stack_a, stack_b);
+	else if (argc >= 7)
+		after_six(stack_a, arr);
 }
 
 void	find_smallest(t_list **stack_a, t_list **stack_b)
 {
 	int	index;
-	int	mid;
+	int	middle;
 	int	i;
 
 	index = ft_index(stack_a);
-	mid = ft_lstsize(stack_a) / 2;
+	middle = ft_lstsize(stack_a) / 2;
 	i = ft_lstsize(stack_a) - index;
-	if (index < mid)
+	if (index < middle)
 	{
-		
+		while (i)
+		{
+			rra(stack_a);
+			i--;
+		}
+		pb(stack_a, stack_b);
+	}
+	else
+	{
+		i = middle;
+		while (i)
+		{
+			ra(stack_a);
+			i--;
+		}
+		pb(stack_a, stack_b);
 	}
 }
 
