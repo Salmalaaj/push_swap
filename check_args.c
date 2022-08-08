@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 06:14:39 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/30 21:27:39 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/08 06:27:58 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	check_args(int argc, char **argv)
 	while (i < argc - 1)
 		tab[i++] = ft_atoi(argv[j++]);
 	duplicated(tab, argc - 1);
+	// free(tab);
 }
 
 void	digit(char *av)

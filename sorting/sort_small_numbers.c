@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:44:09 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/30 21:29:28 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/08 09:47:39 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,52 @@ void	sort_tree(t_list **stack_a)
 	}
 }
 
-void	sort_four(t_list **stack_a, t_list **stack_b)
+void	sort_before_ten(t_list **stack_a, t_list **stack_b)
 {
-	find_smallest(stack_a, stack_b);
+	while (ft_lstsize(stack_a) > 3)
+		find_smallest(stack_a, stack_b);
 	sort_tree(stack_a);
-	pa(stack_a, stack_b);
+	while (ft_lstsize(stack_b) > 0)
+		pa(stack_a, stack_b);
 }
 
-void	sort_five(t_list **stack_a, t_list **stack_b)
+void	transfert(t_list **stack_a, t_interval *interval)
 {
-	find_smallest(stack_a, stack_b);
-	find_smallest(stack_a, stack_b);
-	sort_tree(stack_a);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	t_list	*tmp;
+	int		i;
+	i = 0;
+	tmp = *stack_a;
+	afficher_stack(stack_a,'A');
+	while (i < interval->size)
+	{
+		interval->arr[i] = tmp->data;
+		tmp = tmp->next;
+		i++;
+	}
+	sort_arr(interval, ft_lstsize(stack_a));
+}
+
+void	sort_arr(t_interval *interval, int size)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	j = 0;
+	while (i < size)
+	{
+		j = i;
+		while (j < size)	
+		{	
+			if (interval->arr[i] > interval->arr[j])
+			{
+				tmp = interval->arr[i];
+				interval->arr[i] = interval->arr[j];
+				interval->arr[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
 }

@@ -6,95 +6,102 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 03:59:10 by slaajour          #+#    #+#             */
-/*   Updated: 2022/08/03 05:02:05 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/08 09:47:48 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	after_six(t_list **stack_a, int *arr)
+void	sort_after_ten(t_list **stack_a, t_list **stack_b, int argc)
 {
-	algo(stack_a, arr, 2);
-}
-
-void	algo(t_list **stack_a, int *arr, int nbr)
-{
-	int			size;
-	t_interval	*interval;
+	t_interval	interval;
 	int			i;
-
-	i = 0;
-	size = ft_lstsize(stack_a) / 2;
-	interval = malloc(sizeof(t_interval));
-	arr = malloc(size * sizeof(int));
-	transfert(stack_a, arr);
-	while (i < ft_lstsize(stack_a))
+	int			j;
+	
+	j = 0;
+	initialisation(&interval, argc);
+	transfert(stack_a, &interval);
+	while (j < argc)
 	{
-		printf("%d\n", arr[i]);
+		printf("[ %d ]\n", interval.arr[j]);
+		j++;
+	}
+	if (checking_the_size(interval.size) == 0)
+		interval.offset = interval.size / 8;
+	else
+		interval.offset = interval.size / 18;
+	i = 1;
+	while (ft_lstsize(stack_a))
+	{
+		make_interval(&interval, i);
+		if (interval.max >= interval.size || interval.min < 0)
+			remake_inter(&interval, interval.size);
+		from_a_to_b(stack_a, stack_b, &interval);
 		i++;
 	}
-	interval->center1 = arr[size];
-//	printf("%d\n", interval->center1);
-	while (size != '\0')
+	from_b_to_a(stack_a, stack_b, &interval);
+	free(interval.arr);
+}
+
+void	from_a_to_b(t_list **stack_a, t_list **stack_b, t_interval *interval)
+{
+	int		index;
+	t_list	*tmp;
+
+	tmp = *stack_a;
+	while (tmp != NULL)
 	{
-		make_interval(stack_a, arr, interval, nbr);
-		if (nbr >= size)
+		if (tmp->data <= interval->arr[interval->max]
+			&& tmp->data >= interval->arr[interval->min])
 		{
-			
+			index = index_precise(stack_a, tmp->data); 
+			send_to_top(stack_a, index);
+			pb(stack_a, stack_b);
+			if ((*stack_b)->data < interval->arr[interval->centre])
+				rb(stack_b);
+			tmp = *stack_a;
 		}
+		else
+			tmp = tmp->next;
 	}
 }
 
-void	transfert(t_list **stack_a, int *arr)
+int	index_precise(t_list **stack_a, int nbr)
 {
-	t_list	*tmp;
+	t_list *tmp;
+	int		index;
 	int		i;
 
 	i = 0;
+	index = -1;
 	tmp = *stack_a;
 	while (tmp)
 	{
-		arr[i] = tmp->data;
+		if (tmp->data == nbr)
+		{
+			index = i;
+			break ;
+		}
 		tmp = tmp->next;
 		i++;
 	}
-	sort_arr(arr, ft_lstsize(stack_a));
+	return (index);
 }
 
-void	sort_arr(int *arr, int size)
+void	send_to_top(t_list **stack_a, int index)
 {
 	int	i;
-	int	j;
-	int	tmp;
 
-	i = 0;
-	j = 0;
-	while (i < size)
+	i = ft_lstsize(stack_a);
+	if (index <= (i - 1) / 2)
 	{
-		j = i;
-		while (j < size)
-		{
-			if (arr[i] > arr[j])
-			{
-				tmp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = tmp;
-			}
-			j++;
-		}
-		i++;
+		i = 0;
+		while (i++ < index)
+			ra(stack_a);
 	}
-}
-
-void	make_interval(t_list **stack_a, int *arr, t_interval *interv, int nbr)
-{
-	int	size;
-
-	size = ft_lstsize(stack_a) / 2;
-	interv->center2 = size;
-	printf("%d\n", interv->center2);
-	interv->first = arr[interv->center2 - nbr];
-	printf("%d\n", interv->first);
-	interv->last = arr[interv->center2 + nbr];
-	printf("%d\n", interv->last);
+	else
+	{
+		while (i-- > index)
+			rra(stack_a);
+	}
 }

@@ -6,24 +6,56 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:06:51 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/30 21:27:35 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/08 00:04:32 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	afficher_stack(t_list *stack, char c)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int n)
+{
+	unsigned int	nb;
+
+	nb = n;
+	if (n < 0)
+	{
+		ft_putchar('-');
+		nb = -n;
+	}
+	if (nb <= 9)
+		ft_putchar((nb + 48));
+	if (nb > 9)
+	{
+		ft_putnbr((nb / 10));
+		ft_putchar((nb % 10 + 48));
+	}
+}
+
+
+void	afficher_stack(t_list **stack, char c)
 {
 	t_list	*tmp;
 
-	tmp = stack;
+	tmp = *stack;
 	if (tmp)
-		printf("\n-------- Stack %c --------\n", c);
+	{
+		write(1, "\n-------- Stack ", 16);
+		write(1, &c, 1);
+		write(1, " --------\n", 10);
+	}
 	while (tmp)
 	{
-		printf("[ %d ]", tmp->data);
+		write(1, "[ ", 2);
+		ft_putnbr(tmp->data);
+		write(1, " ]", 2);
 		tmp = tmp->next;
 		if (tmp)
-			printf(" --> ");
+			write(1, "-->", 3);
 	}
+	write(1, "\n", 1);
 }

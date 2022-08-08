@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:53:01 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/30 21:28:22 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/05 03:41:37 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	rra(t_list **stack_a)
 		return ;
 	tmp->data = last_node(stack_a);
 	tmp->next = *stack_a;
+	*stack_a = tmp;
 	write(1, "rra\n", 4);
 }
 
@@ -47,6 +48,7 @@ void	rrb(t_list **stack_b)
 		return ;
 	tmp->data = last_node(stack_b);
 	tmp->next = *stack_b;
+	*stack_b = tmp;
 	write(1, "rrb\n", 4);
 }
 
