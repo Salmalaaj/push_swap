@@ -6,7 +6,7 @@
 #    By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 08:08:31 by slaajour          #+#    #+#              #
-#    Updated: 2022/08/08 09:48:50 by slaajour         ###   ########.fr        #
+#    Updated: 2022/08/12 03:32:36 by slaajour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,23 +15,31 @@ SRCS = push_swap.c check_args.c linked_list_stuff.c functions.c moves/p_moves.c 
 		sorting/sorting_first_steps.c sorting/sort_algorithm.c sorting/sorting_utils.c \
 		sorting/small_functions.c
 
-# FLAGS = -Wall -Wextra -Werror 
-OBJS	= 	$(SRCS:.c=.o)
+SRCS_BONUS = bonus/checker.c bonus/checker_utils.c bonus/checker_utils0.c bonus/checker_utils1.c \
+			check_args.c linked_list_stuff.c bonus/get_next_line/get_next_line.c \
+			bonus/get_next_line/get_next_line_utils.c functions.c
 
-DEBUG = -fsanitize=address -g
 
-NAME	= 	push_swap
-RM		= 	@rm -f
+FLAGS	= -Wall -Wextra -Werror 
+OBJS	= $(SRCS:.c=.o)
+OBJSBNS	= $(SRCS_BONUS:.c=.o)
+NAME	= push_swap
+BONUS	= checker
+RM		= @rm -f
 
-all:	$(NAME)
+$(NAME): $(OBJS)
+	cc $(FLAGS) $(SRCS) -o $(NAME)
 
-$(NAME):
-	@cc $(FLAGS) $(SRCS) -o $(NAME) $(DEBUG)
+all:	$(NAME) bonus
 
+bonus: $(OBJSBNS)
+	cc $(FLAGS) $(SRCS_BONUS) -o $(BONUS) 
+	
 clean:
-	${RM} ${OBJS}
+	${RM} ${NAME} ${BONUS}
 
 fclean:	clean
-	${RM} ${NAME}
+	${RM} ${OBJS}
+	${RM} ${OBJSBNS}
 
 re:		fclean all

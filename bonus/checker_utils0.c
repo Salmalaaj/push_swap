@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr_moves.c                                         :+:      :+:    :+:   */
+/*   checker_utils0.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 20:53:01 by slaajour          #+#    #+#             */
-/*   Updated: 2022/08/11 06:36:19 by slaajour         ###   ########.fr       */
+/*   Created: 2022/08/11 04:14:43 by slaajour          #+#    #+#             */
+/*   Updated: 2022/08/12 03:33:05 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	rra(t_list **stack_a, int ecrire)
 	t_list	*tmp;
 
 	tmp = malloc(sizeof(t_list));
-	if (tmp == NULL)
+	if (!(*stack_a) || tmp == NULL || tmp->next == NULL)
 		return ;
 	tmp->data = last_node(stack_a);
 	tmp->next = *stack_a;
@@ -45,7 +45,7 @@ void	rrb(t_list **stack_b, int ecrire)
 	t_list	*tmp;
 
 	tmp = malloc(sizeof(t_list));
-	if (tmp == NULL)
+	if (!(*stack_b) || tmp == NULL || tmp->next == NULL)
 		return ;
 	tmp->data = last_node(stack_b);
 	tmp->next = *stack_b;

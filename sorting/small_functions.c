@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 02:47:54 by slaajour          #+#    #+#             */
-/*   Updated: 2022/08/08 08:58:13 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/11 09:15:23 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	initialisation(t_interval *interval, int argc)
 	interval->min = 0;
 	interval->centre = argc / 2;
 	interval->max = argc - 1;
-	//interval->down = 0;
+	interval->down = 0;
 	interval->arr = malloc(sizeof(int) * argc);
 	if (!interval->arr)
 		return ;
@@ -28,7 +28,6 @@ void	make_interval(t_interval *interval, int i)
 {
 	interval->max = interval->centre + (interval->offset * i);
 	interval->min = interval->centre - (interval->offset * i);
-	// printf(" interval->centre = %d | ** offset = %d |  min = %d | max = %d\n", interval->centre, interval->offset, interval->min, interval->max);
 }
 
 int	checking_the_size(int argc)

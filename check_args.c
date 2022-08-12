@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 06:14:39 by slaajour          #+#    #+#             */
-/*   Updated: 2022/08/08 06:27:58 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/12 03:27:12 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@ void	check_args(int argc, char **argv)
 
 	i = 0;
 	j = 1;
-	tab = NULL;
 	tab = malloc(sizeof(int) * argc - 1);
+	if (!tab)
+		return ;
 	while (i < argc - 1)
 		digit(argv[++i]);
 	i = 0;
 	while (i < argc - 1)
 		tab[i++] = ft_atoi(argv[j++]);
 	duplicated(tab, argc - 1);
-	// free(tab);
+	free(tab);
 }
 
 void	digit(char *av)
@@ -56,12 +57,6 @@ void	digit(char *av)
 	}
 }
 
-void	print_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
-
 int	ft_atoi(const char *str)
 {
 	int			i;
@@ -84,9 +79,10 @@ int	ft_atoi(const char *str)
 		n = (n * 10) + (str[i] - 48);
 		i++;
 	}
+	n = n * sign;
 	if (n > 2147483647 || n < -2147483648)
 		print_error();
-	return (n * sign);
+	return (n);
 }
 
 void	duplicated(int *dup, int num)

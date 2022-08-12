@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 03:59:10 by slaajour          #+#    #+#             */
-/*   Updated: 2022/08/08 09:47:48 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/12 00:52:20 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,9 @@ void	sort_after_ten(t_list **stack_a, t_list **stack_b, int argc)
 {
 	t_interval	interval;
 	int			i;
-	int			j;
-	
-	j = 0;
+
 	initialisation(&interval, argc);
 	transfert(stack_a, &interval);
-	while (j < argc)
-	{
-		printf("[ %d ]\n", interval.arr[j]);
-		j++;
-	}
 	if (checking_the_size(interval.size) == 0)
 		interval.offset = interval.size / 8;
 	else
@@ -54,11 +47,12 @@ void	from_a_to_b(t_list **stack_a, t_list **stack_b, t_interval *interval)
 		if (tmp->data <= interval->arr[interval->max]
 			&& tmp->data >= interval->arr[interval->min])
 		{
-			index = index_precise(stack_a, tmp->data); 
+			index = index_precise(stack_a, tmp->data);
 			send_to_top(stack_a, index);
-			pb(stack_a, stack_b);
-			if ((*stack_b)->data < interval->arr[interval->centre])
-				rb(stack_b);
+			pb(stack_a, stack_b, 1);
+			if ((*stack_b)->next != NULL
+				&& (*stack_b)->data < interval->arr[interval->centre])
+				rb(stack_b, 1);
 			tmp = *stack_a;
 		}
 		else
@@ -68,7 +62,7 @@ void	from_a_to_b(t_list **stack_a, t_list **stack_b, t_interval *interval)
 
 int	index_precise(t_list **stack_a, int nbr)
 {
-	t_list *tmp;
+	t_list	*tmp;
 	int		index;
 	int		i;
 
@@ -97,11 +91,11 @@ void	send_to_top(t_list **stack_a, int index)
 	{
 		i = 0;
 		while (i++ < index)
-			ra(stack_a);
+			ra(stack_a, 1);
 	}
 	else
 	{
 		while (i-- > index)
-			rra(stack_a);
+			rra(stack_a, 1);
 	}
 }

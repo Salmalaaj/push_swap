@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:06:51 by slaajour          #+#    #+#             */
-/*   Updated: 2022/08/08 00:04:32 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:09:55 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_putnbr(int n)
 	}
 }
 
-
 void	afficher_stack(t_list **stack, char c)
 {
 	t_list	*tmp;
@@ -58,4 +57,10 @@ void	afficher_stack(t_list **stack, char c)
 			write(1, "-->", 3);
 	}
 	write(1, "\n", 1);
+}
+
+void	print_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }

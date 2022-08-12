@@ -6,19 +6,19 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 20:50:47 by slaajour          #+#    #+#             */
-/*   Updated: 2022/08/07 01:37:07 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/11 09:15:09 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ra(t_list **stack_a)
+void	ra(t_list **stack_a, int ecrire)
 {	
 	t_list	*head;
 	t_list	*tmp;
 
 	if (!(*stack_a))
-		return ;	
+		return ;
 	head = *stack_a;
 	tmp = head;
 	head = head->next;
@@ -30,10 +30,11 @@ void	ra(t_list **stack_a)
 			head = head->next;
 		head->next = tmp;
 	}
-	write(1, "ra\n", 3);
+	if (ecrire)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_list **stack_b)
+void	rb(t_list **stack_b, int ecrire)
 {
 	t_list	*head;
 	t_list	*tmp;
@@ -51,11 +52,16 @@ void	rb(t_list **stack_b)
 			head = head->next;
 		head->next = tmp;
 	}
-	write(1, "rb\n", 3);
+	if (ecrire)
+		write(1, "rb\n", 3);
 }
 
-void	rr(t_list **stack_a, t_list **stack_b)
+void	rr(t_list **stack_a, t_list **stack_b, int ecrire)
 {
-	ra(stack_a);
-	rb(stack_b);
+	if (!ft_lstsize(stack_a) || !ft_lstsize(stack_b))
+		return ;
+	ra(stack_a, 0);
+	rb(stack_b, 0);
+	if (ecrire)
+		write(1, "rr\n", 3);
 }

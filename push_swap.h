@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 04:53:18 by slaajour          #+#    #+#             */
-/*   Updated: 2022/08/08 08:36:40 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:00:19 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_list
 
 typedef struct s_interval
 {
+	int	bulk;
 	int	max;
 	int	centre;
 	int	min;
@@ -48,18 +49,18 @@ int		ft_lstsize(t_list **stack_a);
 
 		/* MOVES */
 void	swapping(int *first, int *second);
-void	sa(t_list *stack_a);
-void	sb(t_list *stack_b);
-void	ss(t_list *stack_a, t_list *stack_b);
-void	pa(t_list **stack_a, t_list **stack_b);
-void	pb(t_list **stack_a, t_list **stack_b);
-void	ra(t_list **stack_a);
-void	rb(t_list **stack_b);
-void	rr(t_list **stack_a, t_list **stack_b);
+void	sa(t_list *stack_a, int ecrire);
+void	sb(t_list *stack_b, int ecrire);
+void	ss(t_list *stack_a, t_list *stack_b, int ecrire);
+void	pa(t_list **stack_a, t_list **stack_b, int ecrire);
+void	pb(t_list **stack_a, t_list **stack_b, int ecrire);
+void	ra(t_list **stack_a, int ecrire);
+void	rb(t_list **stack_b, int ecrire);
+void	rr(t_list **stack_a, t_list **stack_b, int ecrire);
 int		last_node(t_list **stack_a);
-void	rra(t_list **stack_a);
-void	rrb(t_list **stack_b);
-void	rrr(t_list **stack_a, t_list **stack_b);
+void	rra(t_list **stack_a, int ecrire);
+void	rrb(t_list **stack_b, int ecrire);
+void	rrr(t_list **stack_a, t_list **stack_b, int ecrire);
 
 		/* SORTING */
 void	start_sorting(t_list **stack_a, t_list **stack_b, int argc);
@@ -81,6 +82,7 @@ void	send_to_top(t_list **stack_a, int index);
 int		index_precise(t_list **stack_a, int nbr);
 void	from_b_to_a(t_list **stack_a, t_list **stack_b, t_interval *interval);
 int		if_value_exist(t_list **stack_b, int nbr);
+void	print_error(void);
 
 		/* RANDOM FUNCTIONS */
 void	afficher_stack(t_list **stack, char c);

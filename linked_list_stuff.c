@@ -6,7 +6,7 @@
 /*   By: slaajour <slaajour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 21:01:19 by slaajour          #+#    #+#             */
-/*   Updated: 2022/07/30 21:27:32 by slaajour         ###   ########.fr       */
+/*   Updated: 2022/08/12 03:27:29 by slaajour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	creat_stack_a(t_list **stack, int i)
 	t_list	*head;
 
 	head = malloc(sizeof(t_list));
+	if (!head)
+		return ;
 	head->data = i;
 	head->next = NULL;
 	ft_lstadd_back(stack, head);
